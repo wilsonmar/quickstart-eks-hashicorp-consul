@@ -1,6 +1,8 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: "Deploys the HashiCorp Consul helm chart into a an Amazon EKS cluster (qs-1r79drkob)."
 Metadata:
+  QuickStartDocumentation:
+    EntrypointName: "Launch into an existing EKS cluster"
   QSLint:
     Exclusions: [W9002, W9003, W9004, W9006]
   AWS::CloudFormation::Interface:
