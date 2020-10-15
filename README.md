@@ -161,16 +161,38 @@ acknowledge that the template creates IAM resources and might require the abilit
 8. Monitor the status of the stack. When the status is CREATE_COMPLETE, the Consul cluster is ready.
 
 ### Step 4. Test the deployment
-TODO: 
+These are the items to test after the quickstart is deployed:
+
+* Gossip protocol and agent TLS encryption:
+
+* Consul UI SSL certificate:
+
+* Envoy proxy client leaf certificate exchange:
+
+* Consul raft peer election:
+
+* Consul auto-pilot:
+
+* Kubernetes deployment namespace and dedicated node selection:
 
 ### Parameter reference
 TODO: 
 
 ### Best practices for using Consul on AWS
-TODO: 
+These are the best best practices for using Consul on AWS. Please note that these best practices are enabled by default in this
+quickstart:
 
-## Security
-TODO: 
+* Enable Consul ACL's for token-based authentication. This will enable users to provide a token to autheticate and access Consul
+control plane and API's.
+
+* Enable Gossip encryption. Gossip encryption will make sure the ACL authentication between server and client agents (RPC)
+are protected from sniffing.
+
+* Enable Agent TLS encryption. Consul supports using TLS to verify the authenticity of servers and clients.
+
+* Enabled SSL certificate on Consul's UI ednpoint. This will protect the Consul UI from attacks.
+
+* Enable Connect Inject and gRPC protocol. This enables Envoy proxy at the client pods and gRPC is necessary.
 
 ## FAQ
 **Q**. I encountered a CREATE_FAILED error when I launched the Quick Start. 
