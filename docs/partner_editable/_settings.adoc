@@ -1,13 +1,14 @@
-:quickstart-project-name: quickstart-documentation-base
-:partner-product-name: Example Product Name
-:partner-product-short-name: Example Product Name
-:partner-company-name: Example Company Name, Ltd.
-:doc-month: May
+:quickstart-project-name: quickstart-eks-hashicorp-consul
+:partner-product-name: Consul on Amazon EKS
+:partner-product-short-name: Consul
+:partner-company-name: HashiCorp
+:doc-month: October
 :doc-year: 2020
-:partner-contributors: John Doe and Jane Doe - {partner-company-name}
-:quickstart-contributors: Jim Smith - AWS Global Partner SA, AWS + Joe Jones - Technical Product Manager, AWS
-:deployment_time: 30 minutes / 1 hour
+:partner-contributors: Dan Callao - {partner-company-name}
+:quickstart-contributors: Andrew Gargan - AWS Solutions Architect
+:deployment_time: 20 minutes
 :default_deployment_region: us-east-1
+//:production_build:
 // Uncomment these two attributes if you are leveraging
 // - an AWS Marketplace listing.
 // Additional content will be auto-generated based on these attributes.
