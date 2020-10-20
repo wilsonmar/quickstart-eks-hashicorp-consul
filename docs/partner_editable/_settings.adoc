@@ -6,7 +6,7 @@
 :doc-year: 2020
 :partner-contributors: Dan Callao - {partner-company-name}
 :quickstart-contributors: Andrew Gargan - AWS Solutions Architect
-:deployment_time: 20 minutes
+:deployment_time: takes between 20 minutes to 1 hour to deploy depending on the options selected
 :default_deployment_region: us-east-1
 //:production_build:
 // Uncomment these two attributes if you are leveraging

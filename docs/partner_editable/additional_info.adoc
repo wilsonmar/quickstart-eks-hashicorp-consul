@@ -4,8 +4,8 @@
 
 == Post deployment steps
 // If Post-deployment steps are required, add them here. If not, remove the heading
-See the {partner-product-name} https://www.vaultproject.io/guides[user guide, role=external, window=_blank] to configure
-{partner-product-name}.
+See the {partner-product-short-name} https://www.consul.io/docs/guides[user guide, role=external, window=_blank] to configure
+{partner-product-short-name}.
 
 == Best practices for using {partner-product-short-name} on AWS
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating
