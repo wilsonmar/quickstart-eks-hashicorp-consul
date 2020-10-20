@@ -106,6 +106,7 @@ Parameters:
   ConsulReplicas:
     Type: String
     Default: "3"
+    Description: Number of Consul nodes to deploy.
     AllowedValues:
     - "3"
     - "5"
@@ -175,10 +176,13 @@ Parameters:
     Description: "(Optional) HTTP(S) proxy configuration, if provided all Consul nodes and pod egress traffic will use this proxy. Example: http://10.101.0.100:3128/."
   PrivateSubnet1ID:
     Type: "AWS::EC2::Subnet::Id"
+    Description: ID of private subnet 1 in Availability Zone 1 (e.g., subnet-xxxxxxxx).
   PrivateSubnet2ID:
     Type: "AWS::EC2::Subnet::Id"
+    Description: ID of private subnet 2 in Availability Zone 2 (e.g., subnet-xxxxxxxx).
   PrivateSubnet3ID:
     Type: "AWS::EC2::Subnet::Id"
+    Description: ID of private subnet 3 in Availability Zone 3 (e.g., subnet-xxxxxxxx).
 Conditions:
   UsingDefaultBucket: !Equals [!Ref QSS3BucketName, 'aws-quickstart']
   InternalLoadBalancer: !Equals [!Ref LoadBalancerType, 'Internal']
