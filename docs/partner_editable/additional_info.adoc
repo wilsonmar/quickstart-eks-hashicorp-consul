@@ -204,20 +204,20 @@ in this Quick Start:
 
 * Enable Consul ACL's for token-based authentication. This will enable users to provide a token to authenticate and
 access Consul control plane and API's. To learn more, please visit
-https://learn.hashicorp.com/tutorials/consul/access-control-setup-production[Secure Consul with Access Control Lists (ACLs)].
+https://learn.hashicorp.com/tutorials/consul/access-control-setup-production[Secure Consul with Access Control Lists (ACLs)^].
 
 * Enable Gossip encryption. Gossip encryption will make sure the ACL authentication between server and client agents (RPC)
 are protected from sniffing. To learn more, please visit
-https://learn.hashicorp.com/tutorials/consul/gossip-encryption-secure?in=consul/security-networking#gossip-encryption[Secure Gossip Communication with Encryption].
+https://learn.hashicorp.com/tutorials/consul/gossip-encryption-secure?in=consul/security-networking#gossip-encryption[Secure Gossip Communication with Encryption^].
 
 * Enable Agent TLS encryption. Consul supports using TLS to verify the authenticity of servers and clients. To learn more,
-please visit https://learn.hashicorp.com/tutorials/consul/tls-encryption-secure?in=consul/security-networking[Secure Consul Agent Communication with TLS Encryption].
+please visit https://learn.hashicorp.com/tutorials/consul/tls-encryption-secure?in=consul/security-networking[Secure Consul Agent Communication with TLS Encryption^].
 
 * Enabled SSL certificate on Consul agents. This will protect the Consul agent communication from attacks. To learn more,
-please visit https://learn.hashicorp.com/tutorials/consul/tls-encryption-openssl-secure?in=consul/day-2-agent-authentication[Secure Consul Agent Communication with TLS Encryption and OpenSSL Certificates].
+please visit https://learn.hashicorp.com/tutorials/consul/tls-encryption-openssl-secure?in=consul/day-2-agent-authentication[Secure Consul Agent Communication with TLS Encryption and OpenSSL Certificates^].
 
 * Enable Connect Inject and gRPC protocol. This enables Envoy proxy at the client pods and gRPC is necessary. To learn more,
-please visit https://learn.hashicorp.com/tutorials/consul/service-mesh-with-envoy-proxy#enable-connect-and-grpc[Secure Service Communication with Consul Service Mesh and Envoy].
+please visit https://learn.hashicorp.com/tutorials/consul/service-mesh-with-envoy-proxy#enable-connect-and-grpc[Secure Service Communication with Consul Service Mesh and Envoy^].
 
 == Security
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating
