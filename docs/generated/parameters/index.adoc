@@ -1,1 +1,3 @@
-// placeholder
+
+=== Launch into an existing EKS cluster
+include::quickstart-eks-hashicorp-consul.template.adoc[]

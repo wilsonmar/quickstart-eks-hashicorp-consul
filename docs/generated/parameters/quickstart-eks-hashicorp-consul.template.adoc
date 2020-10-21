@@ -1,0 +1,33 @@
+
+.Network configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default value|Description|Permitted IP range
+(`RemoteAccessCIDR`)|`**__Requires input__**`|The CIDR IP range that is permitted to access the Consul UI. We recommend that you set this value to a trusted IP range.|HTTP proxy
+(`HttpProxy`)|`**__Blank string__**`|(Optional) HTTP(S) proxy configuration, if provided all Consul nodes and pod egress traffic will use this proxy. Example: http://10.101.0.100:3128/.|First subnet ID for Consul node Auto Scaling group
+(`PrivateSubnet1ID`)|`**__Requires input__**`|ID of private subnet 1 in Availability Zone 1 (e.g., subnet-xxxxxxxx).|Second subnet ID for Consul node Auto Scaling group
+(`PrivateSubnet2ID`)|`**__Requires input__**`|ID of private subnet 2 in Availability Zone 2 (e.g., subnet-xxxxxxxx).|Third subnet ID for Consul node Auto Scaling group
+(`PrivateSubnet3ID`)|`**__Requires input__**`|ID of private subnet 3 in Availability Zone 3 (e.g., subnet-xxxxxxxx).
+|===
+.HashiCorp Consul configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default value|Description|HashiCorp Consul version
+(`ConsulVersion`)|`1.8.4`|Consul version.|HashiCorp Consul deployment size
+(`ConsulDeploymentSize`)|`small`|Deployment size of dedicated HashiCorp Consul EKS nodes.|Number of HashiCorp Consul server nodes
+(`ConsulReplicas`)|`3`|Number of Consul nodes to deploy.|EC2 Key pair
+(`KeyPairName`)|`**__Requires input__**`|The name of an existing public/private key pair, which allows you to securely connect to your instance after it launches.|**NO_LABEL**
+(`KubernetesNameSpace`)|`consul-qs`|Kubernetes namespace for Consul resources.|Internal or external load balancer?
+(`LoadBalancerType`)|`Internal`|Specify if the load balancer for HashiCorp Consul is internal or external.|Load balancer DNS name
+(`DomainName`)|`**__Blank string__**`|Fully qualified domain name for the HashiCorp Consul load balancer. If you don't provide a value for ACMSSLCertificateArn, use the HostedZoneID.|Route 53 hosted zone id
+(`HostedZoneID`)|`**__Blank string__**`|Route 53-hosted zone ID of the domain name. If you don't provide an ACMSSLCertificateArn value, the Quick Start creates the ACM certificate for you using HostedZoneID in conjunction with DomainName.|ACM SSL certificate ARN
+(`ACMSSLCertificateArn`)|`**__Blank string__**`|Amazon Resource Name (ARN) of the load balancer's SSL certificate. If you don't provide values for DomainName and HostedZoneID, provide a value for ACMSSLCertificateArn.
+|===
+.Quick Start Configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default value|Description|Quick Start S3 bucket name
+(`QSS3BucketName`)|`aws-quickstart`|S3 bucket name for the Quick Start assets. This string can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).|Quick Start S3 bucket Region
+(`QSS3BucketRegion`)|`us-east-1`|The Region where the Quick Start S3 bucket (QSS3BucketName) is hosted. When using your own bucket, you must specify this value.|Quick Start S3 object key prefix
+(`QSS3KeyPrefix`)|`quickstart-eks-hashicorp-consul/`|S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), dots(.) and forward slash (/).
+|===

@@ -1,1 +1,21 @@
-// placeholder
+
+:template_aws_cloudformation_stack:
+:template_aws_ec2_securitygroup:
+:template_aws_iam_role:
+:template_aws_route53_recordset:
+:template_awsqs_kubernetes_get:
+:template_awsqs_kubernetes_helm:
+:template_awsqs_kubernetes_resource:
+:template_cloudformation:
+:template_custom_getclustervpccidr:
+:template_custom_getclustervpcid:
+:template_custom_getelbhostedzone:
+:template_custom_getoidcprovider:
+:template_ec2:
+:template_getclustervpccidr:
+:template_getclustervpcid:
+:template_getelbhostedzone:
+:template_getoidcprovider:
+:template_iam:
+:template_kubernetes:
+:template_route53:

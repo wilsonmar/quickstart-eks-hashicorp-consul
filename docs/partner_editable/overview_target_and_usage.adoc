@@ -1,7 +1,25 @@
 // Replace the content in <>
 // Identify your target audience and explain how/why they would use this Quick Start.
-//Avoid borrowing text from third-party websites (copying text from AWS service documentation is fine). Also, avoid marketing-speak, focusing instead on the technical aspect.
+// Avoid borrowing text from third-party websites (copying text from AWS service documentation is fine). Also, avoid
+// marketing-speak, focusing instead on the technical aspect.
 
-This Quick Start reference deployment guide provides step-by-step instructions for deploying {partner-product-short-name} on the AWS Cloud.
 
-This Quick Start is for users who <target audience and usage scenario>
+This Quick Start reference deployment guide provides step-by-step instructions for deploying {partner-company-name}
+{partner-product-short-name} on Amazon Elastic Kubernetes Service (Amazon EKS) via {partner-company-name}
+{partner-product-short-name}'s Helm chart.
+
+{partner-company-name} {partner-product-short-name} is a product that centrally secures, stores and controls access to
+tokens, passwords, certificates, and encryption keys through a UI, CLI, or an HTTP API.
+
+{partner-company-name} {partner-product-short-name}'s core use cases include:
+
+* Service registry & health monitoring, to provide a real-time directory of all services with their health status;
+* Network middleware automation, with service discovery for dynamic reconfiguration as services scale up, down or move;
+* Zero trust network with service mesh, to secure service-to-service traffic with identity-based security policies and
+encrypted traffic with Mutual-TLS.
+
+This Quick Start is for service networking professionals and application developers who want to securely connect
+services, monitor, and automate them. It's deployed via the
+https://github.com/hashicorp/consul-helm[{partner-product-short-name} Helm chart],
+which contains all of the resource definitions to install and configure {partner-product-short-name} inside of a
+Kubernetes cluster.
