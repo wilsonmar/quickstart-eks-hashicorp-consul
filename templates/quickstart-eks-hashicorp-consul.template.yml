@@ -28,7 +28,7 @@ Metadata:
           - HostedZoneID
           - ACMSSLCertificateArn
       - Label:
-          default: Quick Start Configuration
+          default: Quick Start configuration
         Parameters:
           - QSS3BucketName
           - QSS3BucketRegion
@@ -41,7 +41,7 @@ Metadata:
       PrivateSubnet3ID:
         default: Third subnet ID for Consul node Auto Scaling group
       KeyPairName:
-        default: EC2 Key pair
+        default: EC2 key pair
       QSS3BucketName:
         default: Quick Start S3 bucket name
       QSS3KeyPrefix:
@@ -51,11 +51,11 @@ Metadata:
       RemoteAccessCIDR:
         default: Permitted IP range
       LoadBalancerType:
-        default: Internal or external load balancer?
+        default: Type of load balancer
       ACMSSLCertificateArn:
         default: ACM SSL certificate ARN
       HostedZoneID:
-        default: Route 53 hosted zone id
+        default: Route 53 hosted zone ID
       DomainName:
         default: Load balancer DNS name
       ConsulVersion:
@@ -92,11 +92,11 @@ Parameters:
       - "extralarge"
   ClusterName:
     Type: String
-    Description: Amazon EKS Cluster
+    Description: Amazon EKS Cluster.
   KeyPairName:
     Type: "AWS::EC2::KeyPair::KeyName"
-    Description: The name of an existing public/private key pair, which allows you
-      to securely connect to your instance after it launches.
+    Description: Name of an existing key pair that allows you
+      to connect to your instance after it launches.
   ConsulVersion:
     Type: String
     Default: "1.8.4"
@@ -118,21 +118,21 @@ Parameters:
   LoadBalancerType:
     Type: String
     Default: "Internal"
-    Description: Specify if the load balancer for HashiCorp Consul is internal or external.
+    Description: Specify whether the load balancer for HashiCorp Consul is internal or external.
     AllowedValues:
     - "Internal"
     - "External"
   DomainName:
     Type: String
     Description: Fully qualified domain name for the HashiCorp Consul load balancer.
-      If you don't provide a value for ACMSSLCertificateArn, use the HostedZoneID.
+      If you don't provide a value for ACMSSLCertificateArn, use HostedZoneID.
     MaxLength: 128
     Default: ""
   HostedZoneID:
     Type: String
-    Description: Route 53-hosted zone ID of the domain name. If you don't provide an
+    Description: Route 53 hosted zone ID of the domain name. If you don't provide an
       ACMSSLCertificateArn value, the Quick Start creates the ACM certificate for you using
-      HostedZoneID in conjunction with DomainName.
+      HostedZoneID together with DomainName.
     Default: ""
   ACMSSLCertificateArn:
     Description: Amazon Resource Name (ARN) of the load balancer's SSL certificate. If you
@@ -153,36 +153,36 @@ Parameters:
   QSS3KeyPrefix:
     AllowedPattern: ^[0-9a-zA-Z-/.]*$
     ConstraintDescription: Quick Start key prefix can include numbers, lowercase letters,
-      uppercase letters, hyphens (-), dots(.) and forward slash (/).
+      uppercase letters, hyphens (-), periods (.) and forward slash (/).
     Default: quickstart-eks-hashicorp-consul/
     Description: S3 key prefix for the Quick Start assets. Quick Start key prefix
-      can include numbers, lowercase letters, uppercase letters, hyphens (-), dots(.) and
+      can include numbers, lowercase letters, uppercase letters, hyphens (-), periods (.) and
       forward slash (/).
     Type: String
   QSS3BucketRegion:
     Default: 'us-east-1'
-    Description: The Region where the Quick Start S3 bucket (QSS3BucketName) is
-      hosted. When using your own bucket, you must specify this value.
+    Description: Region where the Quick Start S3 bucket (QSS3BucketName) is
+      hosted. If you use your own bucket, you must specify this value.
     Type: String
   RemoteAccessCIDR:
     AllowedPattern: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/([0-9]|[1-2][0-9]|3[0-2]))$
     ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/x
-    Description: The CIDR IP range that is permitted to access the Consul UI. We recommend
+    Description: CIDR IP range that is permitted to access the Consul UI. We recommend
       that you set this value to a trusted IP range.
     Type: String
   HttpProxy:
     Type: String
     Default: ""
-    Description: "(Optional) HTTP(S) proxy configuration, if provided all Consul nodes and pod egress traffic will use this proxy. Example: http://10.101.0.100:3128/."
+    Description: "(Optional) HTTP(S) proxy configuration. If you provide a value for this, all Consul nodes and pod egress traffic uses this proxy (e.g., http://10.101.0.100:3128/)."
   PrivateSubnet1ID:
     Type: "AWS::EC2::Subnet::Id"
-    Description: ID of private subnet 1 in Availability Zone 1 (e.g., subnet-xxxxxxxx).
+    Description: ID of private subnet 1, in Availability Zone 1 (e.g., subnet-xxxxxxxx).
   PrivateSubnet2ID:
     Type: "AWS::EC2::Subnet::Id"
-    Description: ID of private subnet 2 in Availability Zone 2 (e.g., subnet-xxxxxxxx).
+    Description: ID of private subnet 2, in Availability Zone 2 (e.g., subnet-xxxxxxxx).
   PrivateSubnet3ID:
     Type: "AWS::EC2::Subnet::Id"
-    Description: ID of private subnet 3 in Availability Zone 3 (e.g., subnet-xxxxxxxx).
+    Description: ID of private subnet 3, in Availability Zone 3 (e.g., subnet-xxxxxxxx).
 Conditions:
   UsingDefaultBucket: !Equals [!Ref QSS3BucketName, 'aws-quickstart']
   InternalLoadBalancer: !Equals [!Ref LoadBalancerType, 'Internal']
