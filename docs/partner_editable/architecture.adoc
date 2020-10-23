@@ -1,7 +1,8 @@
+//TODO As for Vault, provide brief explanations for each bullet point.
 In AWS:
 
 * Application Load Balancer.
-* Amazon Certificate Manager(ACM) certificate.
+* Amazon Certificate Manager (ACM) certificate.
 
 In Kubernetes:
 
