@@ -6,17 +6,17 @@ Metadata:
 Parameters:
   ClusterName:
     Type: String
-    Description: Amazon EKS Cluster
+    Description: Amazon EKS cluster
   KubernetesNameSpace:
     Type: String
     Default: "default"
-    Description: Kubernetes Namespace
+    Description: Kubernetes namespace
   OIDCProvider:
     Type: String
-    Description: Amazon EKS cluster OIDC provider. (Without the protocol e.g. oidc.eks.us-east-1.amazonaws.com/id/SADFASFFASFXCCVXCVSDFSDF)
+    Description: Amazon EKS cluster OIDC provider (without the protocol, e.g., oidc.eks.us-east-1.amazonaws.com/id/SADFASFFASFXCCVXCVSDFSDF)
   ConsulVersion:
     Type: String
-    Description: Amazon EKS cluster OIDC provider. (Without the protocol e.g. oidc.eks.us-east-1.amazonaws.com/id/SADFASFFASFXCCVXCVSDFSDF)
+    Description: Amazon EKS cluster OIDC provider (without the protocol, e.g., oidc.eks.us-east-1.amazonaws.com/id/SADFASFFASFXCCVXCVSDFSDF)
   GossipScriptURL:
     Type: String
     Description: Script to generate
