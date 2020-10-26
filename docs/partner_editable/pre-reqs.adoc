@@ -7,11 +7,11 @@ https://docs.aws.amazon.com/acm/[AWS Certificate Manager(ACM)]https://docs.aws.a
 
 Option 1: Let the Quick Start create one.
 
-* Provide both a Route 53 Hosted Zone id and domain name for the {partner-product-short-name} load balancer.
+* Provide both a Route 53 Hosted Zone ID and domain name for the {partner-product-short-name} load balancer.
 
 Option 2: Bring your own.
 
-* Provide your own ACM certificate by it's
+* Provide your own ACM certificate using its
 https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awscertificatemanager.html#awscertificatemanager-resources-for-iam-policies[Amazon Resource Name(ARN)].
 
-NOTE: The ACM certificate must reside in the same AWS Region in which you are deploying this Quick Start.
+NOTE: The ACM certificate must reside in the same AWS Region in which you deploy this Quick Start.

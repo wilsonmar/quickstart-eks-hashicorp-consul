@@ -9,8 +9,7 @@
 
 ==== Kubernetes Consul deployment namespace and dedicated node selection:
 
-The deployment creates a namespace named `consul-server` by default. To verify the namespace in kuberkenes, please
-run the following:
+This deployment creates a `consul-server` namespace by default. Verify the namespace in Kubernetes:
 
 ----
 $ kubectl get ns
@@ -19,11 +18,10 @@ default           Active   3h24m
 kube-node-lease   Active   3h24m
 kube-public       Active   3h24m
 kube-system       Active   3h24m
-consul-server      Active   3h9m
+consul-server     Active   3h9m
 ----
 
-The deployment builds kuberntes server pods of the `consul-server` namespace on dedicated nodes. To verify the dedicated nodes,
-please run the following:
+This deployment builds Kubernetes server pods on dedicated nodes in the `consul-server` namespace. Verify the dedicated nodes:
 
 ----
 $ kubectl get pods -o wide -n consul-server
@@ -47,7 +45,7 @@ generate-gossip-secret-sg-087bc91b3b3c5dc0d-vqg6j                 0/1     Comple
 
 ==== Kubernetes services:
 
-The deployment creates a minimum of 7 services as follows:
+This deployment creates at least seven services:
 
 ----
 $ kubectl get svc -n consul-server
@@ -62,13 +60,13 @@ k8smesh-gateway                                 ExternalName   <none>           
 ----
 
 ==== Consul agent TLS encryption:
-Verify the deployment configuration by running:
+Verify the deployment's configuration:
 
 ----
 $ kubectl get deploy -n consul-server -o yaml
 ----
 
-Then observe the volume mounts for each pod:
+Note the volume mounts for each pod:
 
 ----
 volumeMounts:
@@ -79,7 +77,7 @@ volumeMounts:
 ----
 
 ==== Consul UI SSL certificate:
-This is done by verifying the DNS endpoint of the deployment and checking for the SSL cert installation
+Verify the DNS endpoint of the deployment, and check for the SSL certifcate:
 ----
 $ openssl s_client -connect lonconsul.gargana.myinstance.com:443
 CONNECTED(00000007)
@@ -128,9 +126,10 @@ issuer=C = US, O = Amazon, OU = Server CA 1B, CN = Amazon
 ----
 
 ==== Envoy proxy client leaf certificate exchange:
-In order to check the leaf certificate generation a the proxy endpoints, you will need to deploy at least one dummy service and its `envoy`
-proxy. To learn more, please read  [Secure Applications with Service Sidecar Proxies](https://learn.hashicorp.com/tutorials/consul/service-mesh-application-secure-networking).
-For instance, to  check on the `web` envoy proxy, run the following:
+To check the leaf certificate generation at the proxy endpoints, you must deploy at least one dummy service and its `envoy`
+proxy. For more information, see https://learn.hashicorp.com/tutorials/consul/service-mesh-application-secure-networking[Secure Applications with Service Sidecar Proxies^].
+
+Check the `web` envoy proxy:
 
 ----
 $ kubectl -n consul-server  exec  -it consul-1602814488-consul-server-0 -- /bin/sh
@@ -165,7 +164,7 @@ web-sidecar-proxy
 
 ==== Consul raft peer election:
 
-To check on the  raft peer election status, run the following:
+Check the raft peer election status:
 
 ----
 $ kubectl -n consul-server  exec  -it consul-1602814488-consul-server-0 -- /bin/sh
@@ -178,7 +177,7 @@ consul-1602814488-consul-server-0  9162e175-e79f-9a0b-3ae1-ad7a08ee8fe7  10.0.13
 
 ==== Consul auto-pilot:
 
-To check on the Consul auto-pilot configuration, run the following:
+Check the Consul autopilot configuration:
 
 ----
 $ kubectl -n consul-server  exec  -it consul-1602814488-consul-server-0 -- /bin/sh
@@ -199,34 +198,31 @@ $ kubectl -n consul-server  exec  -it consul-1602814488-consul-server-0 -- /bin/
 
 === Best practices for using Consul on AWS
 
-These are the best best practices for using Consul on AWS. Please note that these best practices are enabled by default
-in this Quick Start:
+The following best practices are enabled by default for this Quick Start:
 
-* Enable Consul ACL's for token-based authentication. This will enable users to provide a token to authenticate and
-access Consul control plane and API's. To learn more, please visit
+* Enable Consul ACLs for token-based authentication. This enables users to use a token to authenticate and
+access the Consul control plane and APIs. For more information, see
 https://learn.hashicorp.com/tutorials/consul/access-control-setup-production[Secure Consul with Access Control Lists (ACLs)^].
 
-* Enable Gossip encryption. Gossip encryption will make sure the ACL authentication between server and client agents (RPC)
-are protected from sniffing. To learn more, please visit
+* Enable Gossip encryption. Gossip encryption helps to ensure that the ACL authentication between the server and client agents (RPC) are protected from sniffing. For more information, see
 https://learn.hashicorp.com/tutorials/consul/gossip-encryption-secure?in=consul/security-networking#gossip-encryption[Secure Gossip Communication with Encryption^].
 
-* Enable Agent TLS encryption. Consul supports using TLS to verify the authenticity of servers and clients. To learn more,
-please visit https://learn.hashicorp.com/tutorials/consul/tls-encryption-secure?in=consul/security-networking[Secure Consul Agent Communication with TLS Encryption^].
+* Enable Agent TLS encryption. Consul uses TLS to verify the authenticity of servers and clients. For more information, see https://learn.hashicorp.com/tutorials/consul/tls-encryption-secure?in=consul/security-networking[Secure Consul Agent Communication with TLS Encryption^].
 
-* Enabled SSL certificate on Consul agents. This will protect the Consul agent communication from attacks. To learn more,
-please visit https://learn.hashicorp.com/tutorials/consul/tls-encryption-openssl-secure?in=consul/day-2-agent-authentication[Secure Consul Agent Communication with TLS Encryption and OpenSSL Certificates^].
+* Enable SSL certificates on Consul agents. This helps to protect the Consul agent communication from attacks. For more information, see https://learn.hashicorp.com/tutorials/consul/tls-encryption-openssl-secure?in=consul/day-2-agent-authentication[Secure Consul Agent Communication with TLS Encryption and OpenSSL Certificates^].
 
-* Enable Connect Inject and gRPC protocol. This enables Envoy proxy at the client pods and gRPC is necessary. To learn more,
-please visit https://learn.hashicorp.com/tutorials/consul/service-mesh-with-envoy-proxy#enable-connect-and-grpc[Secure Service Communication with Consul Service Mesh and Envoy^].
+* Enable Connect Inject and the gRPC protocol. This enables Envoy proxy on the client pods and 
+//TODO Run-on sentence. What is gRPC necessary for?
+gRPC is necessary. For more information, see https://learn.hashicorp.com/tutorials/consul/service-mesh-with-envoy-proxy#enable-connect-and-grpc[Secure Service Communication with Consul Service Mesh and Envoy^].
 
 == Security
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating
 // data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed
 // information.
 
-* End to end TLS is enforced.
+* End-to-end TLS is enforced.
 * A dedicated Kubernetes namespace is created for {partner-product-name} Kubernetes resources.
-* {partner-product-name} is running on dedicated Kubernetes nodes.
+* {partner-product-name} runs on dedicated Kubernetes nodes.
 * The {partner-product-short-name} UI is provided for exploratory purposes. We recommend keeping the
 {partner-product-short-name} UI accessible only inside the VPC or disabling access to it by setting the
 permitted IP range to 127.0.0.1/32.

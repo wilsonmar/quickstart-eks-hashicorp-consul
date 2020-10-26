@@ -843,9 +843,9 @@ p.footer-text a{color:#d7d8d8}
 </div>
 </div>
 <div class="paragraph text-center">
-<p><strong>October, 2020</strong><br>
-<em>Dan Callao - HashiCorp</em><br>
-<em>Andrew Gargan - AWS Solutions Architect</em></p>
+<p><strong>October 2020</strong><br>
+<em>Dan Callao, HashiCorp</em><br>
+<em>Andrew Gargan, AWS Quick Start team</em></p>
 </div>
 <div class="admonitionblock tip text-left">
 <table>
@@ -869,37 +869,31 @@ report bugs, or submit feature ideas for this Quick Start.
 <h2 id="_overview">Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This Quick Start reference deployment guide provides step-by-step instructions for deploying HashiCorp
-Consul on Amazon Elastic Kubernetes Service (Amazon EKS) via HashiCorp
-Consul&#8217;s Helm chart.</p>
+<p>This Quick Start reference deployment guide provides step-by-step instructions for deploying HashiCorp Consul on Amazon Elastic Kubernetes Service (Amazon EKS) via HashiCorp Consul&#8217;s Helm chart.</p>
 </div>
 <div class="paragraph">
-<p>HashiCorp Consul is a product that centrally secures, stores and controls access to
-tokens, passwords, certificates, and encryption keys through a UI, CLI, or an HTTP API.</p>
+<p>HashiCorp Consul is a product that helps to centrally secure, store, and control access to tokens, passwords, certificates, and encryption keys through a user interface (UI), command line interface (CLI), or HTTP application programming interface (API).</p>
 </div>
 <div class="paragraph">
-<p>HashiCorp Consul&#8217;s core use cases include:</p>
+<p>Use cases for HashiCorp Consul include:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Service registry &amp; health monitoring, to provide a real-time directory of all services with their health status;</p>
+<p>Service registry and health monitoring to provide a real-time directory of all services and their health status.</p>
 </li>
 <li>
-<p>Network middleware automation, with service discovery for dynamic reconfiguration as services scale up, down or move;</p>
+<p>Network middleware automation with service discovery for dynamic reconfiguration as services scale up, down, or move.</p>
 </li>
 <li>
-<p>Zero trust network with service mesh, to secure service-to-service traffic with identity-based security policies and
-encrypted traffic with Mutual-TLS.</p>
+<p>Zero-trust network with service mesh to secure service-to-service traffic with identity-based security policies and encrypted traffic with mutual Transport Layer Security (TLS).</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>This Quick Start is for service networking professionals and application developers who want to securely connect
-services, monitor, and automate them. It&#8217;s deployed via the
-<a href="https://github.com/hashicorp/consul-helm">Consul Helm chart</a>,
-which contains all of the resource definitions to install and configure Consul inside of a
-Kubernetes cluster.</p>
+<p>This Quick Start is for service-networking professionals and application developers who want to securely connect, monitor, and automate services. It&#8217;s deployed via the
+<a href="https://github.com/hashicorp/consul-helm" target="_blank" rel="noopener">Consul Helm chart</a>,
+which contains all of the resource definitions to install and configure Consul inside of a Kubernetes cluster.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -908,9 +902,7 @@ Kubernetes cluster.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Amazon may share who uses AWS
-Quick Starts with the AWS Partner Network (APN) Partner that
-collaborated with AWS on the content of the Quick Start.
+Amazon may share user-deployment information with the AWS Partner that collaborated with AWS on the Quick Start.
 </td>
 </tr>
 </table>
@@ -921,19 +913,7 @@ collaborated with AWS on the content of the Quick Start.
 <h2 id="_software_licenses">Software licenses</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>These two paragraphs provide an example of the details you can provide. Provide links as appropriate.</p>
-</div>
-<div class="paragraph">
-<p>Example content below:</p>
-</div>
-<div class="paragraph">
-<p><em>&lt;license information&gt;This Quick Start requires a license for Consul. To use the Quick Start in your production environment, sign up for a license at &lt;link&gt;. When you launch the Quick Start, place the license key in an S3 bucket and specify its location.</em></p>
-</div>
-<div class="paragraph">
-<p><em>If you don’t have a license, the Quick Start deploys with a trial license. The trial license gives you &lt;n&gt; days of free usage in a non-production environment. After this time, you can upgrade to a production license by following the instructions at &lt;link&gt;.</em></p>
-</div>
-<div class="paragraph">
-<p><em>&lt;AMI information&gt;The Quick Start requires a subscription to the Amazon Machine Image (AMI) for Consul, which is available from <a href="https://aws.amazon.com/marketplace/" target="_blank" rel="noopener">AWS Marketplace</a>. Additional pricing, terms, and conditions may apply. For instructions, see <a href="#step-2.-subscribe-to-the-software-ami">step 2</a> in the deployment section.</em></p>
+<p>No software licenses required.</p>
 </div>
 </div>
 </div>
@@ -958,10 +938,10 @@ collaborated with AWS on the content of the Quick Start.
 <div class="ulist">
 <ul>
 <li>
-<p>Application Load Balancer.</p>
+<p>Application Load Balancer for the Consul UI service.</p>
 </li>
 <li>
-<p>Amazon Certificate Manager(ACM) certificate.</p>
+<p>Amazon Certificate Manager (ACM) certificate for the Consul UI service.</p>
 </li>
 </ul>
 </div>
@@ -977,16 +957,16 @@ collaborated with AWS on the content of the Quick Start.
 <p>namespace for Consul.</p>
 </li>
 <li>
-<p>Internal Consul TLS certificate and certificate authority.</p>
+<p>Internal Consul TLS certificate and certificate authority for end to end TLS.</p>
 </li>
 <li>
-<p>Federation secret.</p>
+<p>Federation secret to allow other Consul clusters to integrate with this one via mesh gateway.</p>
 </li>
 <li>
-<p>Gossip secret.</p>
+<p>Gossip secret for secure trusted communication between Consul servers for cluster membership.</p>
 </li>
 <li>
-<p>Consul service:</p>
+<p>Consul service itself consisting of:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -999,10 +979,10 @@ collaborated with AWS on the content of the Quick Start.
 <p>Consul dns service.</p>
 </li>
 <li>
-<p>Consul ui service.</p>
+<p>Consul UI service.</p>
 </li>
 <li>
-<p>Ingres controller for Consul ui service.</p>
+<p>Ingres controller for Consul UI service.</p>
 </li>
 </ul>
 </div>
@@ -1026,9 +1006,9 @@ deploy, and operate your infrastructure and applications on the AWS
 Cloud.</p>
 </div>
 <div class="paragraph">
-<p>This Quick Start assumes familiarity with <a href="https://aws.amazon.com/eks/" class="external" target="_blank" rel="noopener">Amazon EKS</a>,
-<a href="https://aws.amazon.com/cloudformation/" class="external" target="_blank" rel="noopener">AWS CloudFormation</a> and
-<a href="https://kubernetes.io/" class="external" target="_blank" rel="noopener">Kubernetes</a>.</p>
+<p>This Quick Start assumes familiarity with <a href="https://aws.amazon.com/eks/" target="_blank" rel="noopener">Amazon EKS</a>,
+<a href="https://aws.amazon.com/cloudformation/" target="_blank" rel="noopener">AWS CloudFormation</a>, and
+<a href="https://kubernetes.io/" target="_blank" rel="noopener">Kubernetes</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1254,8 +1234,7 @@ If you’re deploying Consul into an existing VPC, make sure that any private su
 <div class="sect3">
 <h4 id="_kubernetes_consul_deployment_namespace_and_dedicated_node_selection">Kubernetes Consul deployment namespace and dedicated node selection:</h4>
 <div class="paragraph">
-<p>The deployment creates a namespace named <code>consul-server</code> by default. To verify the namespace in kuberkenes, please
-run the following:</p>
+<p>This deployment creates a <code>consul-server</code> namespace by default. Verify the namespace in Kubernetes:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1265,12 +1244,11 @@ default           Active   3h24m
 kube-node-lease   Active   3h24m
 kube-public       Active   3h24m
 kube-system       Active   3h24m
-consul-server      Active   3h9m</pre>
+consul-server     Active   3h9m</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The deployment builds kuberntes server pods of the <code>consul-server</code> namespace on dedicated nodes. To verify the dedicated nodes,
-please run the following:</p>
+<p>This deployment builds Kubernetes server pods on dedicated nodes in the <code>consul-server</code> namespace. Verify the dedicated nodes:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1297,7 +1275,7 @@ generate-gossip-secret-sg-087bc91b3b3c5dc0d-vqg6j                 0/1     Comple
 <div class="sect3">
 <h4 id="_kubernetes_services">Kubernetes services:</h4>
 <div class="paragraph">
-<p>The deployment creates a minimum of 7 services as follows:</p>
+<p>This deployment creates at least seven services:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1316,7 +1294,7 @@ k8smesh-gateway                                 ExternalName   &lt;none&gt;     
 <div class="sect3">
 <h4 id="_consul_agent_tls_encryption">Consul agent TLS encryption:</h4>
 <div class="paragraph">
-<p>Verify the deployment configuration by running:</p>
+<p>Verify the deployment&#8217;s configuration:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1324,7 +1302,7 @@ k8smesh-gateway                                 ExternalName   &lt;none&gt;     
 </div>
 </div>
 <div class="paragraph">
-<p>Then observe the volume mounts for each pod:</p>
+<p>Note the volume mounts for each pod:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1339,7 +1317,7 @@ k8smesh-gateway                                 ExternalName   &lt;none&gt;     
 <div class="sect3">
 <h4 id="_consul_ui_ssl_certificate">Consul UI SSL certificate:</h4>
 <div class="paragraph">
-<p>This is done by verifying the DNS endpoint of the deployment and checking for the SSL cert installation</p>
+<p>Verify the DNS endpoint of the deployment, and check for the SSL certifcate:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1393,9 +1371,11 @@ issuer=C = US, O = Amazon, OU = Server CA 1B, CN = Amazon
 <div class="sect3">
 <h4 id="_envoy_proxy_client_leaf_certificate_exchange">Envoy proxy client leaf certificate exchange:</h4>
 <div class="paragraph">
-<p>In order to check the leaf certificate generation a the proxy endpoints, you will need to deploy at least one dummy service and its <code>envoy</code>
-proxy. To learn more, please read  [Secure Applications with Service Sidecar Proxies](<a href="https://learn.hashicorp.com/tutorials/consul/service-mesh-application-secure-networking" class="bare">https://learn.hashicorp.com/tutorials/consul/service-mesh-application-secure-networking</a>).
-For instance, to  check on the <code>web</code> envoy proxy, run the following:</p>
+<p>To check the leaf certificate generation at the proxy endpoints, you must deploy at least one dummy service and its <code>envoy</code>
+proxy. For more information, see <a href="https://learn.hashicorp.com/tutorials/consul/service-mesh-application-secure-networking" target="_blank" rel="noopener">Secure Applications with Service Sidecar Proxies</a>.</p>
+</div>
+<div class="paragraph">
+<p>Check the <code>web</code> envoy proxy:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1433,7 +1413,7 @@ web-sidecar-proxy
 <div class="sect3">
 <h4 id="_consul_raft_peer_election">Consul raft peer election:</h4>
 <div class="paragraph">
-<p>To check on the  raft peer election status, run the following:</p>
+<p>Check the raft peer election status:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1449,7 +1429,7 @@ consul-1602814488-consul-server-0  9162e175-e79f-9a0b-3ae1-ad7a08ee8fe7  10.0.13
 <div class="sect3">
 <h4 id="_consul_auto_pilot">Consul auto-pilot:</h4>
 <div class="paragraph">
-<p>To check on the Consul auto-pilot configuration, run the following:</p>
+<p>Check the Consul autopilot configuration:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1474,32 +1454,28 @@ consul-1602814488-consul-server-0  9162e175-e79f-9a0b-3ae1-ad7a08ee8fe7  10.0.13
 <div class="sect2">
 <h3 id="_best_practices_for_using_consul_on_aws">Best practices for using Consul on AWS</h3>
 <div class="paragraph">
-<p>These are the best best practices for using Consul on AWS. Please note that these best practices are enabled by default
-in this Quick Start:</p>
+<p>The following best practices are enabled by default for this Quick Start:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Enable Consul ACL&#8217;s for token-based authentication. This will enable users to provide a token to authenticate and
-access Consul control plane and API&#8217;s. To learn more, please visit
+<p>Enable Consul ACLs for token-based authentication. This enables users to use a token to authenticate and
+access the Consul control plane and APIs. For more information, see
 <a href="https://learn.hashicorp.com/tutorials/consul/access-control-setup-production" target="_blank" rel="noopener">Secure Consul with Access Control Lists (ACLs)</a>.</p>
 </li>
 <li>
-<p>Enable Gossip encryption. Gossip encryption will make sure the ACL authentication between server and client agents (RPC)
-are protected from sniffing. To learn more, please visit
+<p>Enable Gossip encryption. Gossip encryption helps to ensure that the ACL authentication between the server and client agents (RPC) are protected from sniffing. For more information, see
 <a href="https://learn.hashicorp.com/tutorials/consul/gossip-encryption-secure?in=consul/security-networking#gossip-encryption" target="_blank" rel="noopener">Secure Gossip Communication with Encryption</a>.</p>
 </li>
 <li>
-<p>Enable Agent TLS encryption. Consul supports using TLS to verify the authenticity of servers and clients. To learn more,
-please visit <a href="https://learn.hashicorp.com/tutorials/consul/tls-encryption-secure?in=consul/security-networking" target="_blank" rel="noopener">Secure Consul Agent Communication with TLS Encryption</a>.</p>
+<p>Enable Agent TLS encryption. Consul uses TLS to verify the authenticity of servers and clients. For more information, see <a href="https://learn.hashicorp.com/tutorials/consul/tls-encryption-secure?in=consul/security-networking" target="_blank" rel="noopener">Secure Consul Agent Communication with TLS Encryption</a>.</p>
 </li>
 <li>
-<p>Enabled SSL certificate on Consul agents. This will protect the Consul agent communication from attacks. To learn more,
-please visit <a href="https://learn.hashicorp.com/tutorials/consul/tls-encryption-openssl-secure?in=consul/day-2-agent-authentication" target="_blank" rel="noopener">Secure Consul Agent Communication with TLS Encryption and OpenSSL Certificates</a>.</p>
+<p>Enable SSL certificates on Consul agents. This helps to protect the Consul agent communication from attacks. For more information, see <a href="https://learn.hashicorp.com/tutorials/consul/tls-encryption-openssl-secure?in=consul/day-2-agent-authentication" target="_blank" rel="noopener">Secure Consul Agent Communication with TLS Encryption and OpenSSL Certificates</a>.</p>
 </li>
 <li>
-<p>Enable Connect Inject and gRPC protocol. This enables Envoy proxy at the client pods and gRPC is necessary. To learn more,
-please visit <a href="https://learn.hashicorp.com/tutorials/consul/service-mesh-with-envoy-proxy#enable-connect-and-grpc" target="_blank" rel="noopener">Secure Service Communication with Consul Service Mesh and Envoy</a>.</p>
+<p>Enable Connect Inject and the gRPC protocol. This enables Envoy proxy on the client pods and
+gRPC is necessary. For more information, see <a href="https://learn.hashicorp.com/tutorials/consul/service-mesh-with-envoy-proxy#enable-connect-and-grpc" target="_blank" rel="noopener">Secure Service Communication with Consul Service Mesh and Envoy</a>.</p>
 </li>
 </ul>
 </div>
@@ -1512,13 +1488,13 @@ please visit <a href="https://learn.hashicorp.com/tutorials/consul/service-mesh-
 <div class="ulist">
 <ul>
 <li>
-<p>End to end TLS is enforced.</p>
+<p>End-to-end TLS is enforced.</p>
 </li>
 <li>
 <p>A dedicated Kubernetes namespace is created for Consul on Amazon EKS Kubernetes resources.</p>
 </li>
 <li>
-<p>Consul on Amazon EKS is running on dedicated Kubernetes nodes.</p>
+<p>Consul on Amazon EKS runs on dedicated Kubernetes nodes.</p>
 </li>
 <li>
 <p>The Consul UI is provided for exploratory purposes. We recommend keeping the
@@ -1548,10 +1524,7 @@ permitted IP range to 127.0.0.1/32.</p>
 <p><strong>Q.</strong> I encountered a <strong>CREATE_FAILED</strong> error when I launched the Quick Start.</p>
 </div>
 <div class="paragraph">
-<p><strong>A.</strong> If AWS CloudFormation fails to create the stack, we recommend that you relaunch the template with
-<strong>Rollback on failure</strong> set to <strong>Disabled</strong>. (This setting is under <strong>Advanced</strong> in the AWS CloudFormation console,
-<strong>Options</strong> page.) With this setting, the stack’s state is retained and the instance is left running, so you can
-troubleshoot the issue. (For Windows, look at the log files in %ProgramFiles%\Amazon\EC2ConfigService and C:\cfn\log.)</p>
+<p><strong>A.</strong> If AWS CloudFormation fails to create the stack, we recommend that you relaunch the template with <strong>Rollback on failure</strong> set to <strong>Disabled</strong>. (This setting is under <strong>Advanced</strong> in the AWS CloudFormation console, <strong>Options</strong> page.) With this setting, the stack’s state is retained and the instance remains running so you can troubleshoot the issue. (For Windows, look at the log files in <code>%ProgramFiles%\Amazon\EC2ConfigService</code> and <code>C:\cfn\log</code>.)</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1560,25 +1533,21 @@ troubleshoot the issue. (For Windows, look at the log files in %ProgramFiles%\Am
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-When you set <strong>Rollback on failure</strong> to <strong>Disabled</strong>, you continue to incur AWS charges for this stack. Please make
-sure to delete the stack when you finish troubleshooting.
+When you set <strong>Rollback on failure</strong> to <strong>Disabled</strong>, you continue to incur AWS charges for the stack. Ensure to delete the stack when you finish troubleshooting.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>For additional information, see
-<a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html" class="external" target="_blank" rel="noopener">Troubleshooting AWS CloudFormation</a>
-on the AWS website.</p>
+<p>For more information, see
+<a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html" target="_blank" rel="noopener">Troubleshooting AWS CloudFormation</a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Q.</strong> I encountered a size limitation error when I deployed the AWS CloudFormation templates.</p>
 </div>
 <div class="paragraph">
-<p><strong>A.</strong> We recommend that you launch the Quick Start templates from the links in this guide or from another S3 bucket. If
-you deploy the templates from a local copy on your computer or from a location other than an S3 bucket, you might
-encounter template size limitations. For more information about AWS CloudFormation quotas, see the
-<a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html" class="external" target="_blank" rel="noopener">AWS documentation</a>.</p>
+<p><strong>A.</strong> We recommend that you launch the Quick Start templates from the links in this guide or from another S3 bucket. If you deploy the templates from a local copy on your computer or from a location other than an S3 bucket, you might encounter template size limitations. For more information about AWS CloudFormation quotas, see
+<a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html" target="_blank" rel="noopener">AWS CloudFormation quotas</a>.</p>
 </div>
 </div>
 </div>
@@ -1586,12 +1555,12 @@ encounter template size limitations. For more information about AWS CloudFormati
 <h2 id="_troubleshooting">Troubleshooting</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For general EKS troubleshooting steps see the
-<a href="https://aws-quickstart.github.io/quickstart-amazon-eks/" class="external" target="_blank" rel="noopener">EKS Quick Start documentation</a>.</p>
+<p>For general EKS troubleshooting, see
+<a href="https://aws-quickstart.github.io/quickstart-amazon-eks/" target="_blank" rel="noopener">Amazon EKS on the AWS Cloud</a>.</p>
 </div>
 <div class="paragraph">
-<p>For HashiCorp Consul specific troubleshooting see
-<a href="https://learn.hashicorp.com/tutorials/consul/troubleshooting" class="external" target="_blank" rel="noopener">Consul troubleshooting documentation</a>.</p>
+<p>For HashiCorp Consul specific troubleshooting, see how to
+<a href="https://learn.hashicorp.com/tutorials/consul/troubleshooting" target="_blank" rel="noopener">Troubleshoot Common Consul Issues</a>.</p>
 </div>
 </div>
 </div>
@@ -1631,31 +1600,31 @@ encounter template size limitations. For more information about AWS CloudFormati
 <td class="tableblock halign-left valign-top"><p class="tableblock">Permitted IP range
 (<code>RemoteAccessCIDR</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The CIDR IP range that is permitted to access the Consul UI. We recommend that you set this value to a trusted IP range.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CIDR IP range that is permitted to access the Consul UI. We recommend that you set this value to a trusted IP range.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">HTTP proxy
 (<code>HttpProxy</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) HTTP(S) proxy configuration, if provided all Consul nodes and pod egress traffic will use this proxy. Example: <a href="http://10.101.0.100:3128/" class="bare">http://10.101.0.100:3128/</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) HTTP(S) proxy configuration. If you provide a value for this, all Consul nodes and pod egress traffic uses this proxy (e.g., <a href="http://10.101.0.100:3128/" class="bare">http://10.101.0.100:3128/</a>).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">First subnet ID for Consul node Auto Scaling group
 (<code>PrivateSubnet1ID</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ID of private subnet 1 in Availability Zone 1 (e.g., subnet-xxxxxxxx).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID of private subnet 1, in Availability Zone 1 (e.g., subnet-xxxxxxxx).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Second subnet ID for Consul node Auto Scaling group
 (<code>PrivateSubnet2ID</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ID of private subnet 2 in Availability Zone 2 (e.g., subnet-xxxxxxxx).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID of private subnet 2, in Availability Zone 2 (e.g., subnet-xxxxxxxx).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Third subnet ID for Consul node Auto Scaling group
 (<code>PrivateSubnet3ID</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ID of private subnet 3 in Availability Zone 3 (e.g., subnet-xxxxxxxx).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID of private subnet 3, in Availability Zone 3 (e.g., subnet-xxxxxxxx).</p></td>
 </tr>
 </tbody>
 </table>
@@ -1693,10 +1662,10 @@ encounter template size limitations. For more information about AWS CloudFormati
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of Consul nodes to deploy.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EC2 Key pair
+<td class="tableblock halign-left valign-top"><p class="tableblock">EC2 key pair
 (<code>KeyPairName</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The name of an existing public/private key pair, which allows you to securely connect to your instance after it launches.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of an existing key pair that allows you to connect to your instance after it launches.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>NO_LABEL</strong>
@@ -1705,22 +1674,22 @@ encounter template size limitations. For more information about AWS CloudFormati
 <td class="tableblock halign-left valign-top"><p class="tableblock">Kubernetes namespace for Consul resources.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Internal or external load balancer?
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of load balancer
 (<code>LoadBalancerType</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Internal</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specify if the load balancer for HashiCorp Consul is internal or external.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether the load balancer for HashiCorp Consul is internal or external.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Load balancer DNS name
 (<code>DomainName</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Fully qualified domain name for the HashiCorp Consul load balancer. If you don&#8217;t provide a value for ACMSSLCertificateArn, use the HostedZoneID.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fully qualified domain name for the HashiCorp Consul load balancer. If you don&#8217;t provide a value for ACMSSLCertificateArn, use HostedZoneID.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Route 53 hosted zone id
+<td class="tableblock halign-left valign-top"><p class="tableblock">Route 53 hosted zone ID
 (<code>HostedZoneID</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Route 53-hosted zone ID of the domain name. If you don&#8217;t provide an ACMSSLCertificateArn value, the Quick Start creates the ACM certificate for you using HostedZoneID in conjunction with DomainName.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Route 53 hosted zone ID of the domain name. If you don&#8217;t provide an ACMSSLCertificateArn value, the Quick Start creates the ACM certificate for you using HostedZoneID together with DomainName.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ACM SSL certificate ARN
@@ -1731,7 +1700,7 @@ encounter template size limitations. For more information about AWS CloudFormati
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Quick Start Configuration</caption>
+<caption class="title">Table 3. Quick Start configuration</caption>
 <colgroup>
 <col style="width: 16%;">
 <col style="width: 11%;">
@@ -1755,13 +1724,13 @@ encounter template size limitations. For more information about AWS CloudFormati
 <td class="tableblock halign-left valign-top"><p class="tableblock">Quick Start S3 bucket Region
 (<code>QSS3BucketRegion</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>us-east-1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The Region where the Quick Start S3 bucket (QSS3BucketName) is hosted. When using your own bucket, you must specify this value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Region where the Quick Start S3 bucket (QSS3BucketName) is hosted. If you use your own bucket, you must specify this value.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Quick Start S3 object key prefix
 (<code>QSS3KeyPrefix</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>quickstart-eks-hashicorp-consul/</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), dots(.) and forward slash (/).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), periods (.) and forward slash (/).</p></td>
 </tr>
 </tbody>
 </table>
