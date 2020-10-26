@@ -15,7 +15,7 @@
 // :marketplace_subscription:
 // :marketplace_listing_url: https://example.com/
 :disable_regions:
-:disable_licenses:
+//:disable_licenses:
 :custom_title:
 :eks_addin:
 
