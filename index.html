@@ -808,7 +808,7 @@ p.footer-text a{color:#d7d8d8}
 <li><a href="#_launch_the_quick_start">Launch the Quick Start</a></li>
 </ul>
 </li>
-<li><a href="#_post_deployment_steps">Post deployment steps</a>
+<li><a href="#_post_deployment_steps">Post-deployment steps</a>
 <ul class="sectlevel2">
 <li><a href="#_test_the_deployment">Test the deployment</a></li>
 <li><a href="#_best_practices_for_using_consul_on_aws">Best practices for using Consul on AWS</a></li>
@@ -872,7 +872,7 @@ report bugs, or submit feature ideas for this Quick Start.
 <p>This Quick Start reference deployment guide provides step-by-step instructions for deploying HashiCorp Consul on Amazon Elastic Kubernetes Service (Amazon EKS) via HashiCorp Consul&#8217;s Helm chart.</p>
 </div>
 <div class="paragraph">
-<p>HashiCorp Consul is a product that helps to centrally secure, store, and control access to tokens, passwords, certificates, and encryption keys through a user interface (UI), command line interface (CLI), or HTTP application programming interface (API).</p>
+<p>HashiCorp Consul is a product that helps to centrally secure, store, and control access to tokens, passwords, certificates, and encryption keys through its user interface (UI), command line interface (CLI), or HTTP application programming interface (API).</p>
 </div>
 <div class="paragraph">
 <p>Use cases for HashiCorp Consul include:</p>
@@ -913,7 +913,8 @@ Amazon may share user-deployment information with the AWS Partner that collabora
 <h2 id="_software_licenses">Software licenses</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>No software licenses required.</p>
+<p>The software included in this deployment is licensed under the Mozilla Public License.
+For more information, see <a href="https://github.com/hashicorp/vault/blob/master/LICENSE" target="_blank" rel="noopener">Mozilla Public License 2.0</a>. No other licenses are required.</p>
 </div>
 </div>
 </div>
@@ -933,15 +934,15 @@ Amazon may share user-deployment information with the AWS Partner that collabora
 <p>As shown in figure 1, the Quick Start sets up the following:</p>
 </div>
 <div class="paragraph">
-<p>In AWS:</p>
+<p>In the AWS Cloud:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Application Load Balancer for the Consul UI service.</p>
+<p>An Application Load Balancer for the Consul UI.</p>
 </li>
 <li>
-<p>Amazon Certificate Manager (ACM) certificate for the Consul UI service.</p>
+<p>An Amazon Certificate Manager (ACM) certificate for the Consul UI.</p>
 </li>
 </ul>
 </div>
@@ -951,22 +952,22 @@ Amazon may share user-deployment information with the AWS Partner that collabora
 <div class="ulist">
 <ul>
 <li>
-<p>Dedicated nodegroup for Consul.</p>
+<p>A dedicated node group for Consul.</p>
 </li>
 <li>
-<p>namespace for Consul.</p>
+<p>A namespace for Consul.</p>
 </li>
 <li>
-<p>Internal Consul TLS certificate and certificate authority for end to end TLS.</p>
+<p>An Internal Consul TLS certificate and certificate authority for end-to-end TLS.</p>
 </li>
 <li>
-<p>Federation secret to allow other Consul clusters to integrate with this one via mesh gateway.</p>
+<p>A federation secret to allow other Consul clusters to integrate with this one via mesh gateway.</p>
 </li>
 <li>
-<p>Gossip secret for secure trusted communication between Consul servers for cluster membership.</p>
+<p>A gossip secret for trusted communication between Consul servers.</p>
 </li>
 <li>
-<p>Consul service itself consisting of:</p>
+<p>For the Consul service:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -976,13 +977,13 @@ Amazon may share user-deployment information with the AWS Partner that collabora
 <p>Consul mesh-gateway service.</p>
 </li>
 <li>
-<p>Consul dns service.</p>
+<p>Consul DNS service.</p>
 </li>
 <li>
 <p>Consul UI service.</p>
 </li>
 <li>
-<p>Ingres controller for Consul UI service.</p>
+<p>Ingress controller for the Consul UI.</p>
 </li>
 </ul>
 </div>
@@ -1225,12 +1226,12 @@ is provided in the <a href="#_parameter_reference">Parameter reference</a> secti
 </div>
 </div>
 <div class="sect1">
-<h2 id="_post_deployment_steps">Post deployment steps</h2>
+<h2 id="_post_deployment_steps">Post-deployment steps</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_test_the_deployment">Test the deployment</h3>
 <div class="sect3">
-<h4 id="_kubernetes_consul_deployment_namespace_and_dedicated_node_selection">Kubernetes Consul deployment namespace and dedicated node selection:</h4>
+<h4 id="_kubernetes_consul_deployment_namespace_and_dedicated_node_selection">Kubernetes Consul deployment namespace and dedicated node selection</h4>
 <div class="paragraph">
 <p>This deployment creates a <code>consul-server</code> namespace by default. Verify the namespace in Kubernetes:</p>
 </div>
@@ -1271,7 +1272,7 @@ generate-gossip-secret-sg-087bc91b3b3c5dc0d-vqg6j                 0/1     Comple
 </div>
 </div>
 <div class="sect3">
-<h4 id="_kubernetes_services">Kubernetes services:</h4>
+<h4 id="_kubernetes_services">Kubernetes services</h4>
 <div class="paragraph">
 <p>This deployment creates at least seven services:</p>
 </div>
@@ -1290,7 +1291,7 @@ k8smesh-gateway                                 ExternalName   &lt;none&gt;     
 </div>
 </div>
 <div class="sect3">
-<h4 id="_consul_agent_tls_encryption">Consul agent TLS encryption:</h4>
+<h4 id="_consul_agent_tls_encryption">Consul agent TLS encryption</h4>
 <div class="paragraph">
 <p>Verify the deployment&#8217;s configuration:</p>
 </div>
@@ -1313,9 +1314,9 @@ k8smesh-gateway                                 ExternalName   &lt;none&gt;     
 </div>
 </div>
 <div class="sect3">
-<h4 id="_consul_ui_ssl_certificate">Consul UI SSL certificate:</h4>
+<h4 id="_consul_ui_secure_sockets_layer_ssl_certificate">Consul UI Secure Sockets Layer (SSL) certificate</h4>
 <div class="paragraph">
-<p>Verify the DNS endpoint of the deployment, and check for the SSL certifcate:</p>
+<p>Verify the DNS endpoint of the deployment, and check for the SSL certificate:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1367,7 +1368,7 @@ issuer=C = US, O = Amazon, OU = Server CA 1B, CN = Amazon
 </div>
 </div>
 <div class="sect3">
-<h4 id="_envoy_proxy_client_leaf_certificate_exchange">Envoy proxy client leaf certificate exchange:</h4>
+<h4 id="_envoy_proxy_client_leaf_certificate_exchange">Envoy proxy client leaf certificate exchange</h4>
 <div class="paragraph">
 <p>To check the leaf certificate generation at the proxy endpoints, you must deploy at least one dummy service and its <code>envoy</code>
 proxy. For more information, see <a href="https://learn.hashicorp.com/tutorials/consul/service-mesh-application-secure-networking" target="_blank" rel="noopener">Secure Applications with Service Sidecar Proxies</a>.</p>
@@ -1409,7 +1410,7 @@ web-sidecar-proxy
 </div>
 </div>
 <div class="sect3">
-<h4 id="_consul_raft_peer_election">Consul raft peer election:</h4>
+<h4 id="_consul_raft_peer_election">Consul raft peer election</h4>
 <div class="paragraph">
 <p>Check the raft peer election status:</p>
 </div>
@@ -1425,7 +1426,7 @@ consul-1602814488-consul-server-0  9162e175-e79f-9a0b-3ae1-ad7a08ee8fe7  10.0.13
 </div>
 </div>
 <div class="sect3">
-<h4 id="_consul_auto_pilot">Consul auto-pilot:</h4>
+<h4 id="_consul_autopilot">Consul autopilot</h4>
 <div class="paragraph">
 <p>Check the Consul autopilot configuration:</p>
 </div>
@@ -1457,7 +1458,7 @@ consul-1602814488-consul-server-0  9162e175-e79f-9a0b-3ae1-ad7a08ee8fe7  10.0.13
 <div class="ulist">
 <ul>
 <li>
-<p>Enable Consul ACLs for token-based authentication. This enables users to use a token to authenticate and
+<p>Enable Consul ACLs for token-based authentication. This lets users use a token to authenticate and
 access the Consul control plane and APIs. For more information, see
 <a href="https://learn.hashicorp.com/tutorials/consul/access-control-setup-production" target="_blank" rel="noopener">Secure Consul with Access Control Lists (ACLs)</a>.</p>
 </li>
@@ -1472,8 +1473,7 @@ access the Consul control plane and APIs. For more information, see
 <p>Enable SSL certificates on Consul agents. This helps to protect the Consul agent communication from attacks. For more information, see <a href="https://learn.hashicorp.com/tutorials/consul/tls-encryption-openssl-secure?in=consul/day-2-agent-authentication" target="_blank" rel="noopener">Secure Consul Agent Communication with TLS Encryption and OpenSSL Certificates</a>.</p>
 </li>
 <li>
-<p>Enable Connect Inject and the gRPC protocol. This enables Envoy proxy on the client pods and
-gRPC is necessary. For more information, see <a href="https://learn.hashicorp.com/tutorials/consul/service-mesh-with-envoy-proxy#enable-connect-and-grpc" target="_blank" rel="noopener">Secure Service Communication with Consul Service Mesh and Envoy</a>.</p>
+<p>Enable Connect Inject and the gRPC protocol. This enables the Envoy proxy on the client pods. For more information, see <a href="https://learn.hashicorp.com/tutorials/consul/service-mesh-with-envoy-proxy#enable-connect-and-grpc" target="_blank" rel="noopener">Secure Service Communication with Consul Service Mesh and Envoy</a>.</p>
 </li>
 </ul>
 </div>
@@ -1509,7 +1509,7 @@ permitted IP range to 127.0.0.1/32.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://www.consul.io/docs/guides/kuberenetes-deployment" class="external" target="_blank" rel="noopener">Consul Kubernetes integration</a></p>
+<p><a href="https://www.consul.io/docs/guides/kuberenetes-deployment" target="_blank" rel="noopener">Deploy Consul with Kubernetes</a></p>
 </li>
 </ul>
 </div>
@@ -1557,7 +1557,7 @@ When you set <strong>Rollback on failure</strong> to <strong>Disabled</strong>, 
 <a href="https://aws-quickstart.github.io/quickstart-amazon-eks/" target="_blank" rel="noopener">Amazon EKS on the AWS Cloud</a>.</p>
 </div>
 <div class="paragraph">
-<p>For HashiCorp Consul specific troubleshooting, see how to
+<p>For HashiCorp Consul–specific troubleshooting, see how to
 <a href="https://learn.hashicorp.com/tutorials/consul/troubleshooting" target="_blank" rel="noopener">Troubleshoot Common Consul Issues</a>.</p>
 </div>
 </div>
@@ -1681,19 +1681,19 @@ When you set <strong>Rollback on failure</strong> to <strong>Disabled</strong>, 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Load balancer DNS name
 (<code>DomainName</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Fully qualified domain name for the HashiCorp Consul load balancer. If you don&#8217;t provide a value for ACMSSLCertificateArn, use HostedZoneID.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fully qualified domain name for the HashiCorp Consul load balancer. If you don&#8217;t provide a value for "ACMSSLCertificateArn," use "HostedZoneID."</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Route 53 hosted zone ID
 (<code>HostedZoneID</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Route 53 hosted zone ID of the domain name. If you don&#8217;t provide an ACMSSLCertificateArn value, the Quick Start creates the ACM certificate for you using HostedZoneID together with DomainName.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Route 53 hosted zone ID of the domain name. If you don&#8217;t provide an ACMSSLCertificateArn value, the Quick Start creates the ACM certificate for you using "HostedZoneID" together with "DomainName."</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ACM SSL certificate ARN
 (<code>ACMSSLCertificateArn</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon Resource Name (ARN) of the load balancer&#8217;s SSL certificate. If you don&#8217;t provide values for DomainName and HostedZoneID, provide a value for ACMSSLCertificateArn.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon Resource Name (ARN) of the load balancer&#8217;s SSL certificate. If you don&#8217;t provide values for "DomainName" and "HostedZoneID,"" provide a value for "ACMSSLCertificateArn."</p></td>
 </tr>
 </tbody>
 </table>

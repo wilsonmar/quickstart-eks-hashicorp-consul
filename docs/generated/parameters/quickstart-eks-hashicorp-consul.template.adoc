@@ -19,9 +19,9 @@
 (`KeyPairName`)|`**__Requires input__**`|Name of an existing key pair that allows you to connect to your instance after it launches.|**NO_LABEL**
 (`KubernetesNameSpace`)|`consul-qs`|Kubernetes namespace for Consul resources.|Type of load balancer
 (`LoadBalancerType`)|`Internal`|Specify whether the load balancer for HashiCorp Consul is internal or external.|Load balancer DNS name
-(`DomainName`)|`**__Blank string__**`|Fully qualified domain name for the HashiCorp Consul load balancer. If you don't provide a value for ACMSSLCertificateArn, use HostedZoneID.|Route 53 hosted zone ID
-(`HostedZoneID`)|`**__Blank string__**`|Route 53 hosted zone ID of the domain name. If you don't provide an ACMSSLCertificateArn value, the Quick Start creates the ACM certificate for you using HostedZoneID together with DomainName.|ACM SSL certificate ARN
-(`ACMSSLCertificateArn`)|`**__Blank string__**`|Amazon Resource Name (ARN) of the load balancer's SSL certificate. If you don't provide values for DomainName and HostedZoneID, provide a value for ACMSSLCertificateArn.
+(`DomainName`)|`**__Blank string__**`|Fully qualified domain name for the HashiCorp Consul load balancer. If you don't provide a value for "ACMSSLCertificateArn," use "HostedZoneID."|Route 53 hosted zone ID
+(`HostedZoneID`)|`**__Blank string__**`|Route 53 hosted zone ID of the domain name. If you don't provide an ACMSSLCertificateArn value, the Quick Start creates the ACM certificate for you using "HostedZoneID" together with "DomainName."|ACM SSL certificate ARN
+(`ACMSSLCertificateArn`)|`**__Blank string__**`|Amazon Resource Name (ARN) of the load balancer's SSL certificate. If you don't provide values for "DomainName" and "HostedZoneID,"" provide a value for "ACMSSLCertificateArn."
 |===
 .Quick Start configuration
 [width="100%",cols="16%,11%,73%",options="header",]
