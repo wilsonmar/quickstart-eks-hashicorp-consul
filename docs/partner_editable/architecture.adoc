@@ -1,19 +1,18 @@
-//TODO As for Vault, provide brief explanations for each bullet point.
-In AWS:
+In the AWS Cloud:
 
-* Application Load Balancer for the Consul UI service.
-* Amazon Certificate Manager (ACM) certificate for the Consul UI service.
+* An Application Load Balancer for the Consul UI.
+* An Amazon Certificate Manager (ACM) certificate for the Consul UI.
 
 In Kubernetes:
 
-* Dedicated nodegroup for {partner-product-short-name}.
-* namespace for {partner-product-short-name}.
-* Internal {partner-product-short-name} TLS certificate and certificate authority for end to end TLS.
-* Federation secret to allow other Consul clusters to integrate with this one via mesh gateway.
-* Gossip secret for secure trusted communication between Consul servers for cluster membership.
-* {partner-product-short-name} service itself consisting of:
+* A dedicated node group for {partner-product-short-name}.
+* A namespace for {partner-product-short-name}.
+* An Internal {partner-product-short-name} TLS certificate and certificate authority for end-to-end TLS.
+* A federation secret to allow other Consul clusters to integrate with this one via mesh gateway.
+* A gossip secret for trusted communication between Consul servers.
+* For the {partner-product-short-name} service:
 ** {partner-product-short-name} server pods.
 ** {partner-product-short-name} mesh-gateway service.
-** {partner-product-short-name} dns service.
+** {partner-product-short-name} DNS service.
 ** {partner-product-short-name} UI service.
-** Ingres controller for {partner-product-short-name} UI service.
+** Ingress controller for the {partner-product-short-name} UI.

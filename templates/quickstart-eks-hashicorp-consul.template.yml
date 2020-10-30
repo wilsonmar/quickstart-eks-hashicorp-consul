@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: "Deploys the HashiCorp Consul helm chart into a an Amazon EKS cluster (qs-1r79drkob)."
+Description: "Deploys the HashiCorp Consul Helm chart into an Amazon EKS cluster (qs-1r79drkob)."
 Metadata:
   QuickStartDocumentation:
     EntrypointName: "Launch into an existing EKS cluster"
@@ -125,19 +125,19 @@ Parameters:
   DomainName:
     Type: String
     Description: Fully qualified domain name for the HashiCorp Consul load balancer.
-      If you don't provide a value for ACMSSLCertificateArn, use HostedZoneID.
+      If you don't provide a value for "ACMSSLCertificateArn," use "HostedZoneID."
     MaxLength: 128
     Default: ""
   HostedZoneID:
     Type: String
     Description: Route 53 hosted zone ID of the domain name. If you don't provide an
       ACMSSLCertificateArn value, the Quick Start creates the ACM certificate for you using
-      HostedZoneID together with DomainName.
+      "HostedZoneID" together with "DomainName."
     Default: ""
   ACMSSLCertificateArn:
     Description: Amazon Resource Name (ARN) of the load balancer's SSL certificate. If you
-      don't provide values for DomainName and HostedZoneID, provide a value for
-      ACMSSLCertificateArn.
+      don't provide values for "DomainName" and "HostedZoneID,"" provide a value for
+      "ACMSSLCertificateArn."
     Type: String
     Default: ""
   QSS3BucketName:
@@ -495,29 +495,29 @@ Outputs:
       !Sub
       - "https://${DNSAddress}/"
       - DNSAddress: !If [ CustomDns, !Ref DomainName, !Sub "${GetELBDetail.Response}" ]
-    Description: "Consul UI URL"
+    Description: "Consul UI URL."
 Rules:
   DomainNamePresentWithHostedID:
     RuleCondition: !Equals [ !Ref HostedZoneID, '' ]
     Assertions:
       - Assert: !Not [!Equals [!Ref DomainName, '']]
-        AssertDescription: "Please specify a 'Domain Name' if you specify 'Route 53 Hosted Zone ID'"
+        AssertDescription: 'Specify a domain name if you specified a value for "Route 53–hosted zone ID."'
   HostedIDPresentWithDomainName:
     RuleCondition: !Equals [ !Ref DomainName, '' ]
     Assertions:
       - Assert: !Not [!Equals [!Ref HostedZoneID, '']]
-        AssertDescription: "Please specify a 'Route 53 Hosted Zone ID' if you specify 'Domain Name'"
+        AssertDescription: 'Specify a value for "Route 53 Hosted Zone ID" if you specified a domain name.'
   GenerateOrProvideSSL:
     RuleCondition: !Not [!Equals [!Ref ACMSSLCertificateArn, '']]
     Assertions:
       - Assert: !And
           - !Equals [!Ref HostedZoneID, '']
           - !Equals [!Ref DomainName, '']
-        AssertDescription: "Using an SSL certificate is enforced. A CertificateArn or a HostedZoneID and Domain Name must be provided."
+        AssertDescription: 'Using an SSL certificate is enforced. A "CertificateArn" or "HostedZoneID" and domain name must be provided.'
   NoLoadBalancerInfoSupplied:
     Assertions:
       - Assert: !Or
           - !Not [!Equals [!Ref HostedZoneID, '']]
           - !Not [!Equals [!Ref ACMSSLCertificateArn, '']]
           - !Not [!Equals [!Ref DomainName, '']]
-        AssertDescription: "Using an SSL certificate is enforced. A CertificateArn or a HostedZoneID and Domain Name must be provided."
+        AssertDescription: 'Using an SSL certificate is enforced. A "CertificateArn" or "HostedZoneID" and domain name must be provided.'
