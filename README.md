@@ -1,9 +1,5 @@
 # HashiCorp Consul on Amazon EKS
 
-**DEVELOPER PREVIEW** - This is a preview release and not intended for production use.
-
----
-
 > This Quick Start was created by [HashiCorp](https://hashicorp.com) in collaboration with 
 > Amazon Web Services (AWS). [AWS Quick Starts](https://aws.amazon.com) are automated 
 > reference deployments that use AWS CloudFormation templates to deploy key technologies on AWS, following AWS best 
