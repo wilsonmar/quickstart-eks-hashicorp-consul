@@ -6,7 +6,7 @@
 
 This Quick Start reference deployment guide provides step-by-step instructions for deploying {partner-company-name} {partner-product-short-name} on Amazon Elastic Kubernetes Service (Amazon EKS) via {partner-company-name} {partner-product-short-name}'s Helm chart.
 
-{partner-company-name} {partner-product-short-name} is a product that helps to centrally secure, store, and control access to tokens, passwords, certificates, and encryption keys through a user interface (UI), command line interface (CLI), or HTTP application programming interface (API).
+{partner-company-name} {partner-product-short-name} is a product that helps to centrally secure, store, and control access to tokens, passwords, certificates, and encryption keys through its user interface (UI), command line interface (CLI), or HTTP application programming interface (API).
 
 Use cases for {partner-company-name} {partner-product-short-name} include:
 

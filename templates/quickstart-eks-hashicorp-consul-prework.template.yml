@@ -1,22 +1,22 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: "Deploys dependencies for HashiCorp Consul on an Amazon EKS cluster (qs-1r79drkqt)"
+Description: "Deploys dependencies for HashiCorp Consul on an Amazon EKS cluster (qs-1r79drkqt)."
 Metadata:
   QSLint:
     Exclusions: [W9002, W9003, W9004, W9006]
 Parameters:
   ClusterName:
     Type: String
-    Description: Amazon EKS cluster
+    Description: Amazon EKS cluster.
   KubernetesNameSpace:
     Type: String
     Default: "default"
-    Description: Kubernetes namespace
+    Description: Kubernetes namespace.
   OIDCProvider:
     Type: String
-    Description: Amazon EKS cluster OIDC provider (without the protocol, e.g., oidc.eks.us-east-1.amazonaws.com/id/SADFASFFASFXCCVXCVSDFSDF)
+    Description: Amazon EKS cluster OIDC provider, without the protocol (e.g., oidc.eks.us-east-1.amazonaws.com/id/SADFASFFASFXCCVXCVSDFSDF).
   ConsulVersion:
     Type: String
-    Description: Amazon EKS cluster OIDC provider (without the protocol, e.g., oidc.eks.us-east-1.amazonaws.com/id/SADFASFFASFXCCVXCVSDFSDF)
+    Description: Amazon EKS cluster OIDC provider, without the protocol (e.g., oidc.eks.us-east-1.amazonaws.com/id/SADFASFFASFXCCVXCVSDFSDF).
   GossipScriptURL:
     Type: String
     Description: Script to generate

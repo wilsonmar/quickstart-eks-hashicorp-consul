@@ -8,6 +8,6 @@ then deploys {partner-product-short-name} into this new VPC.
 * *Deploy {partner-product-short-name} into an existing Amazon EKS cluster*. This option provisions {partner-product-short-name} in your existing Amazon EKS cluster.
 
 NOTE: Many advanced or optional configuration items must be configured by launching the
-https://fwd.aws/zwGDB[advanced configuration stack, role=external, window=_blank] before launching one of the deployment options.
+https://fwd.aws/zwGDB[advanced configuration stack^] before launching one of the deployment options.
 
 This Quick Start provides a separate template for each option.
