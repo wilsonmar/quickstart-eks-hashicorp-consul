@@ -4,7 +4,7 @@
 :partner-company-name: HashiCorp
 :doc-month: October
 :doc-year: 2020
-:partner-contributors: Dan Callao, {partner-company-name}
+:partner-contributors: Daniel Callao, {partner-company-name}
 :quickstart-contributors: Andrew Gargan, AWS Quick Start team
 :default_deployment_region: us-east-1
 :parameters_as_appendix:
