@@ -200,7 +200,6 @@ Conditions:
 Resources:
   ConsulNameSpace:
     Type: "AWSQS::Kubernetes::Resource"
-    Namespace: default
     Properties:
       ClusterName: !Ref ClusterName
       Manifest: !Sub
