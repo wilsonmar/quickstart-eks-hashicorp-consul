@@ -328,6 +328,7 @@ Resources:
       HostedZoneId: !Ref "HostedZoneID"
   ConsulUiIngress:
     Type: "AWSQS::Kubernetes::Resource"
+    DependsOn: ConsulHelmChart
     Properties:
       ClusterName: !Ref ClusterName
       Namespace: !Ref KubernetesNameSpace
@@ -341,7 +342,7 @@ Resources:
             labels:
               app: consul
               component: server
-              release: ${ConsulHelmChart.Name}
+              release: consul
             annotations:
               kubernetes.io/ingress.class: alb
               alb.ingress.kubernetes.io/backend-protocol: HTTPS
@@ -356,7 +357,7 @@ Resources:
                 paths:
                 - path: /*
                   backend:
-                    serviceName: "${ConsulHelmChart.Name}-consul-ui"
+                    serviceName: "consul-consul-ui"
                     servicePort: 443
         - SSLCertificate: !If [ CreateDns, !GetAtt "ACMCertificate.Outputs.ACMCertificate", !Ref "ACMSSLCertificateArn" ]
           IsInternalLoadBalancer: !If [ InternalLoadBalancer , 'internal', "internet-facing" ]
@@ -368,6 +369,7 @@ Resources:
       Repository: https://helm.releases.hashicorp.com
       Namespace: !Ref KubernetesNameSpace
       Chart: hashicorp/consul
+      Name: consul
       ValueYaml: !Sub
       - |
         global:
@@ -488,7 +490,7 @@ Resources:
         NodeSelector: !Sub "eks.amazonaws.com/nodegroup: Consul-${Random.GroupId}"
 Outputs:
   ConsulReleaseName:
-    Value: !GetAtt ConsulHelmChart.Name
+    Value: consul
     Description: "Helm release name of Consul deployment."
   ELBUrl:
     Value:
