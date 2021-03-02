@@ -367,6 +367,7 @@ Resources:
       ClusterID: !Ref ClusterName
       Repository: https://helm.releases.hashicorp.com
       Namespace: !Ref KubernetesNameSpace
+      Versions: 0.29.0
       Chart: hashicorp/consul
       Name: consul
       ValueYaml: !Sub
