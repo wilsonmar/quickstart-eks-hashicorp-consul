@@ -369,6 +369,7 @@ Resources:
       Namespace: !Ref KubernetesNameSpace
       Chart: hashicorp/consul
       Name: consul
+      Version: '0.29.0'
       ValueYaml: !Sub
       - |
         global:
