@@ -4,7 +4,7 @@ Metadata:
   QuickStartDocumentation:
     EntrypointName: "Launch into an existing EKS cluster"
   QSLint:
-    Exclusions: [W9002, W9003, W9004, W9006]
+    Exclusions: [ W9002, W9003, W9004, W9006 ]
   AWS::CloudFormation::Interface:
     ParameterGroups:
       - Label:
@@ -187,7 +187,6 @@ Conditions:
   UsingDefaultBucket: !Equals [!Ref QSS3BucketName, 'aws-quickstart']
   InternalLoadBalancer: !Equals [!Ref LoadBalancerType, 'Internal']
   CustomDns: !Not [!Equals [!Ref DomainName, ""]]
-  HostedZoneExists: !Not [!Equals [!Ref HostedZoneID, ""]]
   CreateDns: !And
     - !Not
       - !Equals
@@ -202,6 +201,7 @@ Resources:
     Type: "AWSQS::Kubernetes::Resource"
     Properties:
       ClusterName: !Ref ClusterName
+      Namespace: default
       Manifest: !Sub
         - |
           kind: Namespace
@@ -264,8 +264,7 @@ Resources:
             OIDCProvider3: !Select [ 4, !Split [ "/", !Ref GetOIDCProvider ] ]
         GossipScriptURL: !Sub
         - s3://${S3Bucket}/${QSS3KeyPrefix}scripts/generate_gossip_secrets.sh
-        - S3Region: !If [UsingDefaultBucket, !Ref 'AWS::Region', !Ref QSS3BucketRegion]
-          S3Bucket: !If [UsingDefaultBucket, !Sub '${QSS3BucketName}-${AWS::Region}', !Ref QSS3BucketName]
+        - S3Bucket: !If [UsingDefaultBucket, !Sub '${QSS3BucketName}-${AWS::Region}', !Ref QSS3BucketName]
       TemplateURL: !Sub
       - 'https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QSS3KeyPrefix}templates/quickstart-eks-hashicorp-consul-prework.template.yml'
       - S3Region: !If [UsingDefaultBucket, !Ref 'AWS::Region', !Ref QSS3BucketRegion]
@@ -308,6 +307,7 @@ Resources:
       Name: "ingress/consul-ui"
       Namespace: !Ref "KubernetesNameSpace"
       JsonPath: "{.status.loadBalancer.ingress[0].hostname}"
+      Retries: 3
   GetELBHostedZone:
     Type: Custom::GetELBHostedZone
     DependsOn: ConsulHelmChart
@@ -481,12 +481,7 @@ Resources:
             enabled: true
           nodeSelector: |
             ${NodeSelector}
-      - SSLCertificate: !If [ CreateDns, !GetAtt "ACMCertificate.Outputs.ACMCertificate", !Ref "ACMSSLCertificateArn" ]
-        IsInternalLoadBalancer: !If [ InternalLoadBalancer , 'service.beta.kubernetes.io/aws-load-balancer-internal: "true"', "" ]
-        DNSSAN: !If [ CreateDns, !Sub "serverAdditionalDNSSANs: ['${DomainName}']", ""]
-        ExternalName: !If [ CreateDns, !Sub '"external-dns.alpha.kubernetes.io/hostname": "${DomainName}"', "" ]
-        NameSpace: !Ref KubernetesNameSpace
-        TTL: '"external-dns.alpha.kubernetes.io/ttl": "30"'
+      - DNSSAN: !If [ CreateDns, !Sub "serverAdditionalDNSSANs: ['${DomainName}']", ""]
         NodeSelector: !Sub "eks.amazonaws.com/nodegroup: Consul-${Random.GroupId}"
 Outputs:
   ConsulReleaseName:

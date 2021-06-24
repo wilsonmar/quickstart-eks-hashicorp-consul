@@ -258,7 +258,6 @@
           "UpdateType": "Mutable"
         },
         "Values": {
-          "PrimitiveItemType": "String",
           "Type": "Map",
           "Required": false,
           "Documentation": "https://github.com/aws-quickstart/quickstart-helm-resource-provider",
@@ -300,6 +299,12 @@
           "Documentation": "https://github.com/aws-quickstart/quickstart-kubernetes-resource-provider",
           "PrimitiveType": "String",
           "UpdateType": "Mutable"
+        },
+        "Retries": {
+          "Required": false,
+          "Documentation": "https://github.com/aws-quickstart/quickstart-kubernetes-resource-provider",
+          "PrimitiveType": "Integer",
+          "UpdateType": "Mutable"
         }
       }
     },
@@ -327,7 +332,7 @@
           "UpdateType": "Mutable"
         },
         "Namespace": {
-          "Required": false,
+          "Required": true,
           "Documentation": "https://github.com/aws-quickstart/quickstart-kubernetes-resource-provider",
           "PrimitiveType": "String",
           "UpdateType": "Mutable"
