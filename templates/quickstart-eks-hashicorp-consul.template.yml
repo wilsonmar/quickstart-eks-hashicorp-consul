@@ -202,13 +202,12 @@ Resources:
     Type: "AWSQS::Kubernetes::Resource"
     Properties:
       ClusterName: !Ref ClusterName
-      Manifest: !Sub
-        - |
+      Manifest: !Sub |
           kind: Namespace
           apiVersion: v1
           metadata:
-            name: ${Namespace}
-        - Namespace: !Ref KubernetesNameSpace
+            name: ${KubernetesNameSpace}
+      Namespace: default
   GetClusterVPCID:
     Type: Custom::GetClusterVPCID
     Properties:
