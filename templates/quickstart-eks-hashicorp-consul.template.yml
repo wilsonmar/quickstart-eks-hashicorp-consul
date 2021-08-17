@@ -263,6 +263,9 @@ Resources:
         GossipScriptURL: !Sub
         - s3://${S3Bucket}/${QSS3KeyPrefix}scripts/generate_gossip_secrets.sh
         - S3Bucket: !If [UsingDefaultBucket, !Sub '${QSS3BucketName}-${AWS::Region}', !Ref QSS3BucketName]
+        GossipScriptObjectARN: !Sub
+          - arn:${AWS::Partition}:s3:::${S3Bucket}/${QSS3KeyPrefix}/scripts/generate_gossip_secrets.sh
+          - S3Bucket: !If [UsingDefaultBucket, !Sub '${QSS3BucketName}-${AWS::Region}', !Ref QSS3BucketName]
       TemplateURL: !Sub
       - 'https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QSS3KeyPrefix}templates/quickstart-eks-hashicorp-consul-prework.template.yml'
       - S3Region: !If [UsingDefaultBucket, !Ref 'AWS::Region', !Ref QSS3BucketRegion]
